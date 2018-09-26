@@ -44,26 +44,23 @@ class A:
 ### 2.5、编码
 文件使用 UTF-8 编码
 文件头部加入#-*-conding:utf-8-*-标识
-## 3、import 语句
-import 语句应该分行书写
+
+## 3、空格
+在二元运算符两边各空一格[=,-,+=,==,>,in,is not, and]:
 ···
-# 正确的写法
-import os
-import sys 
-
-# 不推荐的写法
-import sys,os 
-
-# 正确的写法
-from subprocess import Popen, PIPE
+i = i + 1
+submitted += 1
+x = x * 2 - 1
+hypot2 = x * x + y * y
+c = (a + b) * (a - b) 
+#不推荐的写法
+i=i+1
+submitted +=1
+x = x*2 - 1
+hypot2 = x*x + y*y
+c = (a+b) * (a-b)
 ···
-import语句应该使用 absolute import# 正确的写法from foo.bar import Bar # 不推荐的写法from ..bar import Bar
-import语句应该放在文件头部，置于模块说明及docstring之后，于全局变量之前；import语句应该按照顺序排列，每组之间用一个空行分隔import osimport sys import msgpackimport zmq import foo
-导入其他模块的类定义时，可以使用相对导入from myclass import MyClass
-如果发生命名冲突，则可使用命名空间import barimport foo.bar bar.Bar()foo.bar.Bar()
-
-4、空格
-在二元运算符两边各空一格[=,-,+=,==,>,in,is not, and]:# 正确的写法i = i + 1submitted += 1x = x * 2 - 1hypot2 = x * x + y * yc = (a + b) * (a - b) # 不推荐的写法i=i+1submitted +=1x = x*2 - 1hypot2 = x*x + y*yc = (a+b) * (a-b)
+#正确的写法i = i + 1submitted += 1x = x * 2 - 1hypot2 = x * x + y * yc = (a + b) * (a - b) # 不推荐的写法i=i+1submitted +=1x = x*2 - 1hypot2 = x*x + y*yc = (a+b) * (a-b)
 函数的参数列表中，,之后要有空格# 正确的写法def complex(real, imag):    pass # 不推荐的写法def complex(real,imag):    pass
 函数的参数列表中，默认值等号两边不要添加空格# 正确的写法def complex(real, imag=0.0):    pass # 不推荐的写法def complex(real, imag = 0.0):    pass
 左括号之后，右括号之前不要加多余的空格# 正确的写法spam(ham[1], {eggs: 2}) # 不推荐的写法spam( ham[1], { eggs : 2 } )
