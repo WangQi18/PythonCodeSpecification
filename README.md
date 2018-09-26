@@ -108,6 +108,7 @@ def long_function_name(
 session.query(MyTable).\ 
         filter_by(id=1).\        
         one() 
+        
 print 'Hello, '\
        '%s %s!' %\
        ('Harry', 'Potter')
@@ -118,6 +119,7 @@ print 'Hello, '\
 do_first()
 do_second()
 do_third() 
+
 # 不推荐的写法
 do_first();do_second();do_third();
 ```
@@ -126,6 +128,7 @@ if/for/while一定要换行：
 # 正确的写法
 if foo == 'blah':    
     do_blah_thing() 
+    
 # 不推荐的写法
 if foo == 'blah':
     do_blash_thing()
@@ -206,7 +209,8 @@ def run_with_env():
 ```
 私有函数在函数前加一个下划线_
 ```
-class Person():     
+class Person():    
+
     def _private_func():
         pass
  ```
