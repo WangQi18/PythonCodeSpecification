@@ -141,48 +141,91 @@ if foo == 'blah':
 docstring 的规范中最其本的两点：
 所有的公共模块、函数、类、方法，都应该写 docstring 。私有方法不一定需要，但应该在 def 后提供一个块注释来说明。docstring 的结束"""应该独占一行，除非此 docstring 只有一行。"""Return a foobarOptional plotz says to frobnicate the bizbaz first.""" """Oneline docstring"""
 
-二、注释
+# 二、注释
 
-1、注释
-1.1、块注释
+## 1、注释
+### 1.1、块注释
 “#”号后空一格，段落件用空行分开（同样需要“#”号）
-# 块注释# 块注释## 块注释# 块注释
-1.2、行注释
+```
+# 块注释
+# 块注释
+#
+# 块注释
+# 块注释
+```
+### 1.2、行注释
 至少使用两个空格和语句分开，注意不要使用无意义的注释
-# 正确的写法x = x + 1  # 边框加粗一个像素 # 不推荐的写法(无意义的注释)x = x + 1 # x加1
-1.3、建议
+```
+# 正确的写法
+x = x + 1  # 边框加粗一个像素 
+
+# 不推荐的写法(无意义的注释)
+x = x + 1 # x加1
+```
+### 1.3 函数注释
+对自定义函数，表明函数功能和参数及返回描述
+```
+def func(arg1, arg2): 
+    """
+    在这里写函数的一句话总结(如: 计算平均值). 
+    :param arg1:参数1
+    :param arg2: 参数2
+    :return: 返回int
+"""
+```
+### 1.4、建议
 
 在代码的关键部分(或比较复杂的地方), 能写注释的要尽量写注释
-比较重要的注释段, 使用多个等号隔开, 可以更加醒目, 突出重要性app = create_app(name, options) # =====================================# 请勿在此处添加 get post等app路由行为 !!!# ===================================== if __name__ == '__main__':    app.run()
+比较重要的注释段, 使用多个等号隔开, 可以更加醒目, 突出重要性
+```
+app = create_app(name, options) 
 
-2、文档注释（Docstring）
-作为文档的Docstring一般出现在模块头部、函数和类的头部，这样在python中可以通过对象的__doc__对象获取文档.
-编辑器和IDE也可以根据Docstring给出自动提示.
-文档注释以 """ 开头和结尾, 首行不换行, 如有多行, 末行必需换行, 以下是Google的docstring风格示例# -*- coding: utf-8 -*-"""Example docstrings.This module demonstrates documentation as specified by the `Google PythonStyle Guide`_. Docstrings may extend over multiple lines. Sections are createdwith a section header and a colon followed by a block of indented text.Example:    Examples can be given using either the ``Example`` or ``Examples``    sections. Sections support any reStructuredText formatting, including    literal blocks::        $ python example_google.pySection breaks are created by resuming unindented text. Section breaksare also implicitly created anytime a new section starts."""
-不要在文档注释复制函数定义原型, 而是具体描述其具体内容, 解释具体参数和返回值等#  不推荐的写法(不要写函数原型等废话)def function(a, b):    """function(a, b) -> list"""    ... ... #  正确的写法def function(a, b):    """计算并返回a到b范围内数据的平均值"""    ... ...
-对函数参数、返回值等的说明采用numpy标准, 如下所示def func(arg1, arg2):    """在这里写函数的一句话总结(如: 计算平均值).    这里是具体描述.    参数    ----------    arg1 : int        arg1的具体描述    arg2 : int        arg2的具体描述    返回值    -------    int        返回值的具体描述    参看    --------    otherfunc : 其它关联函数等...    示例    --------    示例使用doctest格式, 在`>>>`后的代码可以被文档测试工具作为测试用例自动运行    >>> a=[1,2,3]    >>> print [x + 3 for x in a]    [4, 5, 6]    """
+# =====================================
+# 请勿在此处添加 get post等app路由行为 !!!
+# ===================================== 
 
-文档注释不限于中英文, 但不要中英文混用
+if __name__ == '__main__':
+    app.run()
+```
+# 三、命名规范
+## 1、类名
+类名使用驼峰(CamelCase)命名风格，首字母大写，私有类可用一个下划线开头
+```
+class Farm():   
+    pass class
 
-文档注释不是越长越好, 通常一两句话能把情况说清楚即可
-模块、公有类、公有方法, 能写文档注释的, 应该尽量写文档注释
-三、命名规范
-
-1、模块
-模块尽量使用小写命名，首字母保持小写，尽量不要用下划线(除非多个单词，且数量不多的情况)# 正确的模块名import decoderimport html_parser # 不推荐的模块名import Decoder
-
-2、类名
-类名使用驼峰(CamelCase)命名风格，首字母大写，私有类可用一个下划线开头class Farm():    pass class AnimalFarm(Farm):    pass class _PrivateFarm(Farm):    pass
+AnimalFarm(Farm): 
+    pass 
+    
+class _PrivateFarm(Farm):
+    pass
+```
 将相关的类和顶级函数放在同一个模块里. 不像Java, 没必要限制一个类一个模块.
-3、函数
-函数名一律小写，如有多个单词，用下划线隔开def run():    pass def run_with_env():    pass
-私有函数在函数前加一个下划线_class Person():     def _private_func():        pass
+## 2、函数
+函数名一律小写，如有多个单词，用下划线隔开
+```
+def run():   
+    pass 
 
-4、变量名
-变量名尽量小写, 如有多个单词，用下划线隔开if __name__ == '__main__':    count = 0    school_name = ''
-常量采用全大写，如有多个单词，使用下划线隔开MAX_CLIENT = 100MAX_CONNECTION = 1000CONNECTION_TIMEOUT = 600
-
-5、常量
-常量使用以下划线分隔的大写命名MAX_OVERFLOW = 100 Class FooBar:     def foo_bar(self, print_):        print(print_)
-
-参考文章：http://www.imooc.com/article/19184?block_id=tuijian_wz#child_5_1
+def run_with_env():
+    pass
+```
+私有函数在函数前加一个下划线_
+```
+class Person():     
+    def _private_func():
+        pass
+ ```
+## 3、变量名
+变量名尽量小写, 如有多个单词，用下划线隔开
+```
+if __name__ == '__main__':
+    count = 0    
+    school_name = ''
+```
+常量采用全大写，如有多个单词，使用下划线隔开
+```
+MAX_CLIENT = 100
+MAX_CONNECTION = 1000
+CONNECTION_TIMEOUT = 600
+```
