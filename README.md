@@ -48,8 +48,8 @@ class A:
 ## 3、空格
 在二元运算符两边各空一格[=,-,+=,==,>,in,is not, and]:
 ···
-i = i + 1
-submitted += 1
+i = i + 1<br>
+submitted += 1<br>
 x = x * 2 - 1
 hypot2 = x * x + y * y
 c = (a + b) * (a - b) 
