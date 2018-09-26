@@ -26,11 +26,37 @@ Python 学习之旅，先来看看 Python 的代码规范，让自己先有个�
 ### 2.4、空行
 模块级函数和类定义之间空两行；
 类成员函数之间空一行；
-class A:     def __init__(self):        pass     def hello(self):        pass def main():    pass   
-可以使用多个空行分隔多组相关的函数函数中可以使用空行分隔出逻辑相关的代码2.5、编码
-文件使用 UTF-8 编码文件头部加入#-*-conding:utf-8-*-标识
-3、import 语句
-import 语句应该分行书写# 正确的写法import osimport sys # 不推荐的写法import sys,os # 正确的写法from subprocess import Popen, PIPE
+···
+class A:  
+
+
+    def __init__(self):
+        pass
+        
+    def hello(self):  
+        pass
+        
+    def main():  
+        pass  
+···
+可以使用多个空行分隔多组相关的函数
+函数中可以使用空行分隔出逻辑相关的代码
+### 2.5、编码
+文件使用 UTF-8 编码
+文件头部加入#-*-conding:utf-8-*-标识
+## 3、import 语句
+import 语句应该分行书写
+···
+# 正确的写法
+import os
+import sys 
+
+# 不推荐的写法
+import sys,os 
+
+# 正确的写法
+from subprocess import Popen, PIPE
+···
 import语句应该使用 absolute import# 正确的写法from foo.bar import Bar # 不推荐的写法from ..bar import Bar
 import语句应该放在文件头部，置于模块说明及docstring之后，于全局变量之前；import语句应该按照顺序排列，每组之间用一个空行分隔import osimport sys import msgpackimport zmq import foo
 导入其他模块的类定义时，可以使用相对导入from myclass import MyClass
